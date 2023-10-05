@@ -2,6 +2,7 @@
 import sys
 from calculator_1 import add, sub, mul, div
 
+
 def calculator(a, operator, b):
     if operator == '+':
         result = add(a, b)
@@ -16,6 +17,7 @@ def calculator(a, operator, b):
         sys.exit(1)
 
     print(f"{a} {operator} {b} = {result}")
+
 
 if __name__ == "__main__":
     if len(sys.argv) - 1 != 3:
