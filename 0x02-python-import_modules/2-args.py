@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
     '''a program that prints the number of and the list of its arguments'''
-    from sys import argv 
+    from sys import argv
     num_args = len(argv) - 1
     print("{} argument{}{}{}".format(
         num_args,
