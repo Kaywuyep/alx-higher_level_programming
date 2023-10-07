@@ -11,5 +11,5 @@ def add_tuple(tuple_a=(), tuple_b=()):
 
     # If a tuple is bigger than 2, use only the first 2 integers
     result = (tuple_a[0] + tuple_b[0], tuple_a[1] + tuple_b[1])
-    
+
     return result
