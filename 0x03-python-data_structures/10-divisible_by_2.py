@@ -10,7 +10,7 @@ def divisible_by_2(my_list=[]):
     new = []
     isMultiple = True
     notMultiple = False
-    for i in my_list:
+    for i in range(len(my_list)):
         if i % 2 == 0:
             new.append(isMultiple)
         else:
