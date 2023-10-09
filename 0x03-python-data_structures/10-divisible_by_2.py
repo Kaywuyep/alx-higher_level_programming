@@ -1,15 +1,11 @@
-#!/usr/python3
-
+#!/usr/bin/python3
 
 def divisible_by_2(my_list=[]):
-    '''function that finds all multiples of 2 in a list'''
-    new = []
+    new_list = []
 
-    isMultiple = True
-    notMultiple = False
     for num in my_list:
         if num % 2 == 0:
-            new.append(isMultiple)
+            new_list.append(True)
         else:
-            new.append(notMultiple)
-    return new
+            new_list.append(False)
+    return (new_list)
