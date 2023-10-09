@@ -3,9 +3,8 @@
 
 def divisible_by_2(my_list=[]):
     '''function that finds all multiples of 2 in a list'''
-    if not my_list:
-        return
     new = []
+
     isMultiple = True
     notMultiple = False
     for num in my_list:
