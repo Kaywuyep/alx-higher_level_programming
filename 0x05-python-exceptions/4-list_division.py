@@ -3,17 +3,30 @@
 
 def list_division(my_list_1, my_list_2, list_length):
     """ divides element by element 2 lists"""
-    result_list = []
+    result = []
     for i in range(list_length):
-        result = 0
         try:
-            result = my_list_1[i] / my_list_2[i]
-        except TypeError:
-            print("wrong type")
+            # Try to perform division
+            element_1 = my_list_1[i]
+            element_2 = my_list_2[i]
+
+            div_result = element_1 / element_2
+            result.append(div_result)
+
         except ZeroDivisionError:
             print("division by 0")
+            result.append(0)
+
+        except TypeError:
+            print("wrong type")
+            result.append(0)
+
         except IndexError:
             print("out of range")
+            result.append(0)
+
         finally:
-            result_list.append(result)
-            return result_list
+            # Clean up
+            pass
+
+    return result
