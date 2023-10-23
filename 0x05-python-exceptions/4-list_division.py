@@ -7,10 +7,10 @@ def list_division(my_list_1, my_list_2, list_length):
     for i in range(list_length):
         try:
             # Try to perform division
-            element_1 = my_list_1[i]
-            element_2 = my_list_2[i]
+            a = my_list_1[i]
+            b = my_list_2[i]
 
-            div_result = element_1 / element_2
+            div_result = a / b
             result.append(div_result)
 
         except ZeroDivisionError:
