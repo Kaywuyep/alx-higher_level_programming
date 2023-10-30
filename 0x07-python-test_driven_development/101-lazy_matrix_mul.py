@@ -19,6 +19,6 @@ def lazy_matrix_mul(m_a, m_b):
     """
     try:
         result = numpy.matmul(m_a, m_b)
-        return result.tolist()
+        return result
     except ValueError as e:
         raise ValueError("m_a and m_b can't be multiplied") from e
