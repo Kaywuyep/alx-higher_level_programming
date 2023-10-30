@@ -11,7 +11,7 @@ def init_board(n):
     return board
 
 
-def board_deepcopy(board):
+def deepcopy(board):
     """Return a deepcopy of a chessboard."""
     if isinstance(board, list):
         return list(map(board_deepcopy, board))
@@ -31,7 +31,7 @@ def get_solution(board):
     return solution
 
 
-def xout(board, row, col):
+def mark_spots(board, row, col):
     """X out spots on a chessboard."""
     # X out all forward spots
     for c in range(col + 1, len(board)):
@@ -75,7 +75,7 @@ def xout(board, row, col):
         c -= 1
 
 
-def recursive_solve(board, row, queens, solutions):
+def recursive_solve_nqueen(board, row, queens, solutions):
     """Recursively solve an N-queens puzzle."""
     if queens == len(board):
         solutions.append(get_solution(board))
