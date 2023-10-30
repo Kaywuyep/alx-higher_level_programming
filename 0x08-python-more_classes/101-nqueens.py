@@ -4,7 +4,18 @@ import sys
 
 
 def is_safe(board, row, col, n):
-    """Check if there is a queen in the same column"""
+    """
+    Check if it's safe to place a queen at a specific position on the board.
+
+    Args:
+    - board (list): List representing the current state of the board.
+    - row (int): Row index to check.
+    - col (int): Column index to check.
+    - n (int): Size of the board.
+
+    Returns:
+    - bool: True if it's safe, False otherwise.
+    """
     for i in range(row):
         if board[i] == col or \
            board[i] - i == col - row or \
@@ -14,7 +25,12 @@ def is_safe(board, row, col, n):
 
 
 def print_solution(board):
-    """a the solution on the board"""
+    """
+    Print the solution in the specified format.
+
+    Args:
+    - board (list): List representing the positions of queens on the board.
+    """
     n = len(board)
     for row in range(n):
         print("[{}, {}]".format(row, board[row]), end=" ")
@@ -22,7 +38,14 @@ def print_solution(board):
 
 
 def solve_nqueens(board, row, n):
-    """solve the nqueen tasks"""
+    """
+    Recursively solve the N queens problem and print solutions.
+
+    Args:
+    - board (list): List representing the current state of the board.
+    - row (int): Current row being considered.
+    - n (int): Size of the board.
+    """
     if row == n:
         print_solution(board)
         return
@@ -34,7 +57,15 @@ def solve_nqueens(board, row, n):
 
 
 def nqueens(n):
-    """check is it is an integer"""
+    """
+    Main function to solve the N queens problem.
+
+    Args:
+    - n (str): Size of the chessboard.
+
+    Prints:
+    - All possible solutions to the N queens problem.
+    """
     if not n.isdigit():
         print("N must be a number")
         sys.exit(1)
