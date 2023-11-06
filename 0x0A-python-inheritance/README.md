@@ -1,0 +1,1 @@
+explain inheritance on OOP
