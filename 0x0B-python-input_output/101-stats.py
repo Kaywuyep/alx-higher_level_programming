@@ -3,12 +3,14 @@
 
 import sys
 
+
 def print_pretty(size, code_dict):
     """Prints parsed data"""
     print("File size: {}".format(size))
     for key, value in sorted(code_dict.items()):
         if value != 0:
             print("{}: {}".format(key, value))
+
 
 if __name__ == '__main__':
     """Initial code to print the parsed data"""
