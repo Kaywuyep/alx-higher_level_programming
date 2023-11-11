@@ -10,7 +10,7 @@ import io
 import json
 import os
 from contextlib import redirect_stdout
-from models import square
+from models.square import Square
 from models.base import Base
 Square = square.Square
 
