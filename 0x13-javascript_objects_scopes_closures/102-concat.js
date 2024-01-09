@@ -1,32 +1,28 @@
 #!/usr/bin/node
+const args = process.argv;
+const FileA = args[2];
+const FileB = args[3];
+const destinationFile = args[4];
 const fs = require('fs');
+let contentA;
+let contentB;
 
-const fileA = process.argv[2];
-const fileB = process.argv[3];
-const fileC = process.argv[4];
+fs.readFile(FileA, function (err, data) {
+  if (err) {
+    return console.error(err);
+  }
+  contentA = data.toString();
+  fs.appendFile(destinationFile, contentA, function (err) {
+    if (err) throw err;
+  });
+});
 
-if (process.argv.length !== 5) {
-  console.error('Usage: concat-files.js <fileA> <fileB> <destination>');
-  process.exit(1);
-}
-
-if (
-  !fs.existsSync(fileA) ||
-  !fs.statSync(fileA).isFile() ||
-  !fs.existsSync(fileB) ||
-  !fs.statSync(fileB).isFile() ||
-  fileC === undefined
-) {
-  console.error('Invalid arguments. Please check file paths and ensure destination is provided.');
-  process.exit(1);
-}
-
-const fileAContent = fs.readFileSync(fileA, 'utf-8');
-const fileBContent = fs.readFileSync(fileB, 'utf-8');
-const stream = fs.createWriteStream(fileC);
-
-stream.write(fileAContent);
-stream.write(fileBContent);
-stream.end();
-
-console.log(`Files ${fileA} and ${fileB} have been concatenated to ${fileC}`);
+fs.readFile(FileB, function (err, data) {
+  if (err) {
+    return console.error(err);
+  }
+  contentB = data.toString();
+  fs.appendFile(destinationFile, contentB, function (err) {
+    if (err) throw err;
+  });
+});
