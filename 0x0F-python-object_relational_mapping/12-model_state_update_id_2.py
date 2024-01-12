@@ -10,7 +10,7 @@ from sys import argv
 
 if __name__ == "__main__":
     """connect to the database"""
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
         argv[1],
         argv[2],
         argv[3]),
