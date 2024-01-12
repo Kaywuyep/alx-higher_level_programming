@@ -19,14 +19,15 @@ if __name__ == "__main__":
             db=argv[3])
 
     cursor = db_connect.cursor()
-    """ Get the search term from command-line arguments"""
-    search_term = argv[4]
-    cursor.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC", (search_term,))
+    """ Get the search term from command-line arguments
+    The execute function requires one parameter, the query."""
+    cursor.execute("SELECT * FROM states\
+        WHERE BINARY name = '{}'\
+            ORDER BY id ASC".format(argv[4]))
     states = cursor.fetchall()
 
     for state in states:
-        if state[1] == search_term:
-            print(state)
+        print(state)
 
     cursor.close()
     db_connect.close()
