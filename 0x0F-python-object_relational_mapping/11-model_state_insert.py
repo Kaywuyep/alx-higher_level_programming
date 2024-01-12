@@ -10,7 +10,7 @@ from sys import argv
 
 if __name__ == "__main__":
     """my function adds a new state object louisiana"""
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
         argv[1],
         argv[2],
         argv[3]),
@@ -18,9 +18,7 @@ if __name__ == "__main__":
 
     Base.metadata.create_all(engine)
 
-    Session = sessionmaker()
-    Session.configure(bind=engine)
-
+    Session = sessionmaker(bind=engine)
     session = Session()
 
     new_state = State(name="Louisiana")
