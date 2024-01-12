@@ -23,5 +23,5 @@ if __name__ == "__main__":
 
     for city in session.query(City).join(State).order_by(City.id).all():
         print("{}: ({}) {}".format(city.state.name, city.id, city.name))
-    
+
     session.close()
