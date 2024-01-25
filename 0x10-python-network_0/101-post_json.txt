@@ -1,0 +1,11 @@
+#!/bin/bash
+# sends a JSON POST request to a URL passed as the first arg & displays the body
+
+# Using curl to send a JSON POST request
+# -s: Silent mode, don't show progress meter or error messages
+# -X POST: Specify the HTTP request method as POST
+# -H "Content-Type: application/json": Set the Content-Type header to indicate JSON data
+# -d @$2: Send the contents of the file specified by the second argument as the request body
+# $1: The first argument is the URL
+
+curl -sX POST -H "Content-Type: application/json" -d @$2 $1
