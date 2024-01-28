@@ -16,5 +16,5 @@ if __name__ == "__main__":
     req = signin.get(url)
     try:
         print('{}'.format(req.json()['id']))
-    except:
+    except ValueError:
         print("None")
