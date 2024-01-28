@@ -14,7 +14,11 @@ if __name__ == "__main__":
     signin = requests.Session()
     signin.auth = (argv[1], argv[2])
     req = signin.get(url)
-    try:
-        print('{}'.format(req.json()['id']))
-    except ValueError:
-        print("None")
+
+    if req.status_code == 200:
+        user_data = req.json()
+        user_id = user_data.get('id', 'None')
+        print(user_id)
+
+    else:
+        pass
