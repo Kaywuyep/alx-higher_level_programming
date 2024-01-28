@@ -6,19 +6,13 @@ The first argument will be your username
 The second argument will be your password
 (in your case, a personal access token as password)
 """
+import sys
 import requests
-from sys import argv
+from requests.auth import HTTPBasicAuth
+
 
 if __name__ == "__main__":
     url = "https://api.github.com/user"
-    signin = requests.Session()
-    signin.auth = (argv[1], argv[2])
-    req = signin.get(url)
-
-    if req.status_code == 200:
-        user_data = req.json()
-        user_id = user_data.get('id', 'None')
-        print(user_id)
-
-    else:
-        pass
+    auth = HTTPBasicAuth(sys.argv[1], sys.argv[2])
+    r = requests.get(url, auth=auth)
+    print(r.json().get("id"))
