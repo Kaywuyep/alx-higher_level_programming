@@ -1,38 +1,35 @@
 #!/usr/bin/node
+
 const request = require('request');
 
 const movieId = process.argv[2];
-const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
+//const url = `https://swapi.dev/api/films/${movieId}/`;
+const url = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
+let characters = [];
 
-request.get(apiUrl, (error, response, body) => {
+request(url, (error, response, body) => {
   if (error) {
-    console.error('Error:', error);
+    console.log(error);
     return;
   }
 
-  if (response.statusCode !== 200) {
-    console.error('Failed to fetch data. Status code:', response.statusCode);
-    return;
-  }
-
-  try {
-    const filmData = JSON.parse(body);
-    const characters = filmData.characters;
-    characters.forEach(characterUrl => {
-      request.get(characterUrl, (error, response, body) => {
-        if (error) {
-          console.error('Error fetching character:', error);
-          return;
-        }
-        if (response.statusCode !== 200) {
-          console.error('Failed to fetch character data. Status code:', response.statusCode);
-          return;
-        }
-        const characterData = JSON.parse(body);
-        console.log(characterData.name);
-      });
-    });
-  } catch (parseError) {
-    console.error('Error parsing JSON:', parseError);
-  }
+  const data = JSON.parse(body);
+  characters = data.characters;
+  getCharacters(0);
 });
+
+const getCharacters = (index) => {
+  if (index === characters.length) {
+    return;
+  }
+
+  request(characters[index], (error, response, body) => {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    const characterData = JSON.parse(body);
+    console.log(characterData.name);
+    getCharacters(index + 1);
+  });
+};
